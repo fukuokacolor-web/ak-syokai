@@ -1,0 +1,622 @@
+/* =========================================================
+   株式会社A.K.商会 レッカー制作事業ページ  ― 案1「NIGHT CALL / WORKS」
+   css/style.css（共通）のあとに読み込む。このページ専用の指定だけを書く。
+   クラス名は sk- で始める。スマホ（375px）基準。ブレークポイント 768px / 1024px
+   ========================================================= */
+
+/* ---------- 1. このページ専用のトークン ---------- */
+:root {
+  --sk-deep: #0A0C0F;
+  --sk-steel: #8A939F;
+  --sk-grid: rgba(138,147,159,.08);
+  --sk-chamfer: 12px;
+  --sk-closed-h: 0px;
+}
+@media (min-width: 1024px) {
+  :root { --sk-chamfer: 16px; }
+}
+
+/* ---------- 2. ロードサービスへのリンク（ボタンにしない小さなテキストリンク） ---------- */
+.sk-road {
+  display: inline-block;
+  padding: 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--c-text-sub);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.sec--light .sk-road, .sec--white .sk-road { color: var(--c-light-text-sub); }
+@media (hover: hover) {
+  .sk-road:hover { color: #FFFFFF; }
+  .sec--light .sk-road:hover, .sec--white .sk-road:hover { color: var(--c-light-text); }
+}
+
+/* ---------- 3. 案内帯・ヘッダー ---------- */
+.sk-roadbar {
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-line);
+}
+.sk-roadbar__inner {
+  max-width: calc(1120px + var(--pad) * 2);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+}
+.sk-roadbar .sk-road { padding: 7px 0; }
+
+.sk-top { position: relative; }
+
+.sk-header__brand { display: flex; align-items: center; min-width: 0; }
+.sk-header__div { flex: none; width: 1px; height: 20px; margin: 0 10px; background: rgba(255,255,255,.4); }
+.sk-header__name { font-size: 14px; font-weight: 700; line-height: 1.3; white-space: nowrap; color: #FFFFFF; }
+.sk-header__tel { display: none; }
+.sk-header__btn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  background: rgba(14,16,20,.35);
+}
+@media (hover: hover) { .sk-header__btn:hover { background: rgba(255,255,255,.12); } }
+@media (max-width: 359px) {
+  .sk-header .header__inner { gap: 8px; }
+  .sk-header__name { font-size: 13px; }
+}
+
+@media (min-width: 768px) {
+  /* タブレット・PC：ヘッダーを写真に重ねない */
+  .sk-top .sk-header { position: relative; background: var(--c-bg); border-bottom: 1px solid var(--c-line); }
+}
+@media (min-width: 1024px) {
+  .sk-header__name { font-size: 15px; }
+  .sk-header .header__nav { gap: 20px; }
+  .sk-header__tel { display: flex; flex-direction: column; align-items: flex-end; }
+  .sk-header .header__tel { min-height: 0; line-height: 1.2; }
+  .sk-header__hours { font-size: 13px; font-weight: 700; line-height: 1.3; color: var(--c-text-sub); }
+  .sk-header__btn { display: none; }
+}
+
+/* ---------- 4. CTAセット（LINE → 【制作の相談】の注記 → 電話） ---------- */
+.sk-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 40px;
+}
+.sk-cta__col { display: flex; flex-direction: column; }
+.sk-cta__note { margin-top: 8px; }
+.sec-end + .sk-cta { margin-top: 24px; }
+@media (max-width: 359px) {
+  .sk-cta .btn__main { font-size: 16px; }
+}
+@media (min-width: 1024px) {
+  .sk-cta { flex-direction: row; justify-content: center; align-items: flex-start; gap: 16px; margin-top: 56px; }
+  .sk-cta__col { flex: 1 1 0; max-width: 340px; }
+  .sk-cta__note { max-width: none; }
+}
+
+/* ---------- 5. ファーストビュー ---------- */
+.sk-fv { position: relative; background: var(--c-bg); color: var(--c-text); }
+.sk-fv__photo { position: relative; display: block; }
+.sk-fv__photo img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+.sk-fv__photo::before, .sk-fv__photo::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.sk-fv__photo::before { top: 0; height: 72px; background: linear-gradient(180deg, rgba(14,16,20,.65), rgba(14,16,20,0)); }
+.sk-fv__photo::after { bottom: 0; height: 32px; background: linear-gradient(180deg, rgba(14,16,20,0), #0E1014); }
+.sk-fv__body { position: relative; z-index: 2; padding: 12px var(--pad) 40px; }
+.sk-fv__title {
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+.sk-fv__sub { margin-top: 12px; font-size: 16px; line-height: 1.7; color: var(--c-text-sub); }
+.sk-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.sk-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 1px solid var(--sk-steel);
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #FFFFFF;
+}
+.sk-cta--fv { margin-top: 20px; }
+.sk-fv__road { margin-top: 12px; }
+@media (max-width: 359px) {
+  .sk-fv__title { font-size: 26px; }
+}
+
+@media (min-width: 768px) {
+  .sk-fv__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(44%, 520px);
+    gap: 40px;
+    align-items: center;
+    max-width: calc(1120px + var(--pad) * 2);
+    margin-inline: auto;
+    padding: 48px var(--pad) 64px;
+  }
+  .sk-fv__photo { grid-column: 2; grid-row: 1; margin-bottom: 12px; }
+  .sk-fv__photo::before { display: none; }
+  .sk-fv__photo::after {
+    /* 写真の外側（下）に赤い線（台座のような印） */
+    top: auto; bottom: -12px; right: auto;
+    width: 64px; height: 4px;
+    background: var(--c-accent);
+  }
+  .sk-fv__photo img { aspect-ratio: 4 / 5; max-height: 680px; object-position: 50% 50%; }
+  .sk-fv__body { grid-column: 1; grid-row: 1; padding: 0; }
+  .sk-fv__title { font-size: 40px; }
+  .sk-fv__sub { font-size: 17px; }
+  .sk-cta--fv { flex-direction: column; max-width: 400px; }
+}
+@media (min-width: 1024px) {
+  .sk-fv__inner { grid-template-columns: minmax(0, 1fr) min(46%, 520px); gap: 64px; padding-block: 64px; }
+  .sk-fv__title { font-size: 52px; }
+  .sk-fv__sub { font-size: 18px; }
+  .sk-chip { font-size: 15px; }
+  .sk-cta--fv { flex-direction: row; justify-content: flex-start; max-width: none; margin-top: 32px; }
+  .sk-cta--fv .sk-cta__col { flex: 0 0 280px; }
+}
+
+/* ---------- 6. 現場を知る会社が作る理由 ---------- */
+.sk-story__body { margin-top: 16px; }
+.sk-story__body p + p { margin-top: 16px; }
+.sk-pair { display: grid; gap: 16px; margin-top: 32px; }
+.sk-pair__item img { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
+.sk-pair__item:first-child img { object-position: 40% 50%; }
+.sk-pair__item figcaption { margin-top: 8px; font-size: 14px; line-height: 1.6; color: var(--c-light-text-sub); }
+.sk-pair__en {
+  font-family: var(--f-en);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .08em;
+  color: var(--c-light-accent-text);
+  margin-right: 8px;
+}
+
+.sk-facts { display: grid; gap: 12px; margin-top: 32px; }
+.sk-fact, .sk-consult {
+  position: relative;
+  background: var(--c-light-bg-2);
+  border: 1px solid var(--c-light-line);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(14,16,20,.06);
+}
+.sk-fact::before, .sk-consult::before {
+  content: "";
+  position: absolute;
+  left: -1px; top: -1px;
+  width: 24px; height: 3px;
+  background: var(--c-accent);
+}
+.sk-fact {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  column-gap: 14px;
+  padding: 14px 16px;
+}
+.sk-fact__i { width: 32px; height: 32px; grid-row: span 2; color: var(--c-light-text); stroke-width: 1.8; }
+.sk-fact__title { font-size: 17px; font-weight: 800; line-height: 1.45; }
+.sk-fact__text { margin-top: 4px; font-size: 16px; line-height: 1.7; color: var(--c-light-text-sub); }
+
+.sk-jump { margin-top: 24px; }
+.sk-jump a, .sk-jump-link {
+  display: inline-block;
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.sk-jump a { color: var(--c-light-text); }
+
+@media (min-width: 1024px) {
+  /* 写真の列を広く（各 約320px 以上）。写真の上端を h2 の上端にそろえる（英字ラベル 18px＋余白 12px の分を下げる） */
+  .sk-story { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 5fr); gap: 48px; align-items: start; }
+  .sk-pair { grid-template-columns: 1fr 1fr; margin-top: 30px; }
+  .sk-facts { grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  .sk-fact { grid-template-columns: 40px 1fr; column-gap: 16px; padding: 24px; }
+  .sk-fact__i { width: 40px; height: 40px; }
+  .sk-jump { margin-top: 32px; }
+}
+
+/* ---------- 7. 製作事例（銘板カード） ---------- */
+.sk-plates { display: grid; gap: 24px; margin-top: 32px; }
+.sk-plate {
+  /* 外側（線の色）と内側（カードの地）の2枚重ねで、斜めカットの辺にも線を出す */
+  display: flex;
+  padding: 1px;
+  background: var(--sk-steel);
+  clip-path: polygon(0 0, calc(100% - var(--sk-chamfer)) 0, 100% var(--sk-chamfer), 100% 100%, 0 100%);
+}
+.sk-plate__in {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--c-surface);
+  clip-path: polygon(0 0, calc(100% - var(--sk-chamfer) + 1px) 0, 100% calc(var(--sk-chamfer) - 1px), 100% 100%, 0 100%);
+}
+.sk-plate__photo { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
+.sk-plate__body { flex: 1; display: flex; flex-direction: column; padding: 16px; }
+.sk-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: .08em;
+  color: var(--c-accent-text);
+}
+.sk-type::before {
+  content: "";
+  flex: none;
+  width: 16px;
+  height: 4px;
+  background: var(--c-accent);
+  transform: skewX(-20deg);
+}
+.sk-plate .h3 { margin-top: 8px; }
+.sk-plate__desc { margin-top: 8px; font-size: 16px; line-height: 1.7; color: var(--c-text-sub); }
+.sk-plate__sub {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding-block: 12px;
+  border-top: 1px solid var(--c-line);
+  border-bottom: 1px solid var(--c-line);
+}
+.sk-plate__sub img { flex: none; width: 96px; height: 96px; object-fit: cover; }
+.sk-plate__cta { margin-top: auto; padding-top: 16px; }
+.sk-plate__cta .btn__main { font-size: 16px; }
+.sk-works-tel { margin-top: 24px; }
+@media (min-width: 1024px) {
+  .sk-plates { grid-template-columns: 1fr 1fr; margin-top: 48px; }
+  .sk-plate__body { padding: 24px; }
+  .sk-plate__sub img { width: 120px; height: 120px; }
+  .sk-plate__cta .btn__main { font-size: 17px; }
+  .sk-works-tel { margin-top: 32px; display: flex; justify-content: center; }
+  .sk-works-tel .btn { width: 100%; max-width: 360px; }
+}
+
+/* ---------- 8. 福津工場での製作の様子（最暗＋方眼） ---------- */
+.sk-factory {
+  background-color: var(--sk-deep);
+  background-image:
+    linear-gradient(var(--sk-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sk-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--c-text);
+  border-top: 1px solid rgba(138,147,159,.4);
+}
+.sk-process-list { padding-top: 32px; }
+.sk-process { flex: 0 0 78%; scroll-snap-align: start; }
+.sk-process img { width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; }
+.sk-process .sk-type { margin-top: 12px; }
+.sk-process__cap { margin-top: 6px; font-size: 16px; font-weight: 700; line-height: 1.5; color: #FFFFFF; }
+@media (min-width: 768px) {
+  .sk-process { flex-basis: 44%; }
+}
+@media (min-width: 1024px) {
+  .sk-factory { background-size: 32px 32px; }
+  .sk-process-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    overflow: visible;
+    max-width: calc(1120px + var(--pad) * 2);
+    margin-inline: auto;
+    padding: 48px var(--pad) 0;
+  }
+  .sk-process-hint { display: none; }
+}
+
+/* 動画の枠 */
+.sk-movie { margin-top: 56px; }
+.sk-movie__cap { margin-top: 12px; font-size: 16px; line-height: 1.7; }
+.sk-movie__note { margin-top: 4px; }
+.sk-movie__frame {
+  position: relative;
+  width: min(100%, 300px);
+  margin: 24px auto 0;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  border: 1px solid var(--sk-steel);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.sk-movie__video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+.sk-movie__play { display: none; }
+.sk-movie.is-js .sk-movie__play {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.sk-movie.is-js .sk-movie__play[hidden] { display: none; }
+.sk-movie__circle {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 72px; height: 72px;
+  margin: -36px 0 0 -36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  background: rgba(14,16,20,.72);
+}
+.sk-movie__circle svg { width: 32px; height: 32px; margin-left: 4px; }
+.sk-movie__label {
+  position: absolute;
+  left: 12px; bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 2px;
+  background: rgba(14,16,20,.85);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.sk-movie__play:focus-visible { outline-offset: -4px; }
+@media (min-width: 1024px) {
+  /* 幅 760px の中央にまとめ、枠を左・文字を右に */
+  .sk-movie {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 48px;
+    align-items: center;
+    max-width: 760px;
+    margin: 88px auto 0;
+  }
+  .sk-movie__frame { grid-column: 1; grid-row: 1; width: 320px; margin: 0; }
+  .sk-movie__text { grid-column: 2; grid-row: 1; }
+}
+
+.sk-factory__end { margin-top: 56px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.sk-jump-link { color: #FFFFFF; }
+@media (min-width: 1024px) {
+  .sk-factory__end { margin-top: 88px; flex-direction: row; align-items: baseline; gap: 16px; }
+}
+
+/* ---------- 9. こんなご相談 ---------- */
+.sk-consults { display: grid; gap: 12px; margin-top: 32px; }
+.sk-consult { padding: 20px 16px; }
+.sk-consult__i { width: 40px; height: 40px; color: var(--c-light-text); stroke-width: 1.8; }
+.sk-consult__title { margin-top: 10px; font-size: 18px; font-weight: 800; line-height: 1.45; }
+.sk-consult__text { margin-top: 6px; font-size: 16px; line-height: 1.7; color: var(--c-light-text-sub); }
+.sk-consult--other { border: 1px dashed var(--c-light-text-sub); box-shadow: none; }
+@media (min-width: 1024px) {
+  .sk-consults { grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .sk-consult { padding: 24px; }
+}
+
+/* ---------- 10. ご相談の流れ ---------- */
+#flow .steps { margin-top: 32px; }
+.sk-keyword { font-size: 17px; font-weight: 700; color: #FFFFFF; }
+.sk-flow-callout { margin-top: 32px; }
+@media (min-width: 1024px) {
+  #flow .steps { margin-top: 48px; }
+  .sk-flow-callout { max-width: 760px; margin: 48px auto 0; padding: 20px 24px; }
+}
+
+/* ---------- 11. 会社概要 ---------- */
+.sk-ctable { margin-top: 32px; }
+.sk-tel-link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.sk-ctable .sk-road { padding: 4px 0; }
+@media (min-width: 1024px) {
+  .sk-ctable { margin-top: 48px; }
+}
+
+/* ---------- 12. 最後の問い合わせ ---------- */
+.sk-contact {
+  position: relative;
+  padding-bottom: var(--sec-y);
+  background: var(--c-bg);
+  color: var(--c-text);
+  text-align: center;
+  overflow: hidden;
+}
+.sk-contact__bg { position: relative; display: block; }
+.sk-contact__bg img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.sk-contact__bg::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(14,16,20,0), #0E1014);
+  pointer-events: none;
+}
+.sk-contact.cut { padding-top: 0; }
+.sk-contact__inner { position: relative; z-index: 2; padding-top: 24px; }
+.sk-contact__inner > * { max-width: 560px; margin-inline: auto; }
+.sk-contact .en { justify-content: center; }
+.sk-contact__lead { margin-top: 16px; color: var(--c-text-sub); }
+.sk-cta--contact { margin-top: 32px; }
+.sk-cta--contact .sk-cta__note { text-align: left; }
+.sk-contact__inner > p, .sk-contact__always p { margin-inline: auto; }
+.sk-contact__always { margin-top: 16px; font-size: 14px; line-height: 1.5; color: var(--c-text-sub); }
+.sk-contact__always p:first-child { font-weight: 700; color: #FFFFFF; }
+
+.sk-panel { margin-top: 40px; text-align: left; }
+.sk-copy__lead { font-size: 16px; line-height: 1.7; color: var(--c-text-sub); }
+.sk-copybox { margin-top: 16px; }
+.sk-copybox .copybox__text { font-size: 16px; line-height: 1.8; color: #FFFFFF; white-space: pre-wrap; max-width: none; }
+.sk-copybox .copybox__btn { position: static; margin-top: 16px; }
+.sk-copy-status { margin-top: 8px; font-size: 14px; line-height: 1.6; color: var(--c-text-sub); }
+.sk-copy-status:empty { display: none; }
+.sk-photo-tips { margin-top: 16px; }
+.sk-photo-tips li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--c-text-sub);
+}
+.sk-photo-tips li + li { margin-top: 4px; }
+.sk-photo-tips li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .6em;
+  width: 6px; height: 6px;
+  background: var(--c-text-sub);
+}
+.sk-contact__foot { margin-top: 32px; }
+
+@media (min-width: 1024px) {
+  .sk-contact.cut { padding-top: calc(var(--sec-y) + var(--cut)); }
+  .sk-contact__bg { position: absolute; inset: 0; }
+  .sk-contact__bg img { height: 100%; aspect-ratio: auto; }
+  .sk-contact__bg::after { display: none; }
+  .sk-contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(ellipse 60% 75% at 50% 50%, rgba(14,16,20,.90) 0%, rgba(14,16,20,.82) 55%, rgba(14,16,20,.45) 100%);
+  }
+  .sk-contact__inner { padding-top: 0; }
+  .sk-contact__inner > * { max-width: 720px; }
+  .sk-cta--contact { margin-top: 48px; }
+  .sk-cta--contact .sk-cta__col { flex: 0 0 320px; }
+  .sk-panel {
+    margin-top: 48px;
+    padding: 32px;
+    background: var(--c-surface);
+    border-radius: 4px;
+  }
+}
+
+/* ---------- 13. 受付時間外（18:00〜翌9:00）の案内。body.is-closed のときだけ表示 ---------- */
+.sk-closed { display: none; }
+.is-closed .sk-closed { display: block; }
+
+.sk-closed--box {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--c-surface);
+  border-left: 4px solid var(--sk-steel);
+  border-radius: 4px;
+  text-align: left;
+}
+.sk-closed__title { font-size: 16px; font-weight: 700; line-height: 1.6; color: #FFFFFF; }
+.sk-closed--box .sk-road { font-size: 16px; }
+@media (min-width: 1024px) {
+  .sk-panel .sk-closed--box { padding: 20px; background: var(--c-surface-2); }
+}
+
+.sk-closed--bar {
+  margin: -8px -10px 8px;
+  padding: 8px 10px;
+  background: var(--c-bg);
+  border-bottom: 1px solid var(--c-line);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+.sk-closed--bar p { max-width: none; white-space: nowrap; }
+.sk-closed--bar .sk-closed__title { font-size: 14px; display: inline; }
+.sk-closed--bar a {
+  color: var(--c-text-sub);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* スマホ（〜767px）：帯は出さず、固定ボタンの2行目を「時間外｜9:00〜18:00」に切り替える */
+.sk-sub-closed { display: none; }
+@media (max-width: 767px) {
+  .is-closed .sk-closed--bar { display: none; }
+  .is-closed .sk-fbtn-sub .sk-sub-open { display: none; }
+  .is-closed .sk-fbtn-sub .sk-sub-closed { display: inline; }
+}
+/* 768px〜：1行の帯（約39px）の分だけ本文の下に余白を足す */
+@media (min-width: 768px) {
+  .is-closed { --sk-closed-h: 40px; padding-bottom: calc(var(--fixed-h) + var(--sk-closed-h) + env(safe-area-inset-bottom)); }
+}
+
+/* FV：時間外は箱の中にロードサービスへのリンクがあるので、箱の外のリンクは隠す */
+.sk-closed--fv { margin-top: 16px; }
+.is-closed .sk-fv__road { display: none; }
+
+/* ---------- 14. 画面下部の固定ボタン（このページの文言用） ---------- */
+@media (max-width: 359px) {
+  .sk-long { display: none; }
+  .fbtn--line .fbtn__main { font-size: 16px; }
+}
+@media (max-width: 340px) {
+  /* 共通CSSでは 340px 以下で電話の2行目を隠すが、このページは受付時間を常に見せる */
+  .fbtn--tel .sk-fbtn-sub { display: inline; }
+}
+.fbtn--line .fbtn__main { font-size: 16px; }
+@media (min-width: 1024px) {
+  .fbtn--line .fbtn__main { font-size: 17px; }
+}
+
+/* 案内帯：375px で「→」だけが次の行に落ちないよう、字間をわずかに詰める */
+.sk-roadbar .sk-road { letter-spacing: -.02em; }
+
+/* 320px 前後の時間外：2行目「時間外｜9:00〜18:00」が入るよう、固定ボタンのアイコンを省く（装飾のため） */
+@media (max-width: 359px) {
+  .is-closed .fixed-cta .fbtn__i { display: none; }
+}
+
+/* 359px以下：案内帯を短い文言にして1行に収め、FV の文字の上の余白を詰める（design.md 10-5 L6） */
+.sk-roadbar__short { display: none; }
+@media (max-width: 359px) {
+  .sk-roadbar__long { display: none; }
+  .sk-roadbar__short { display: inline; }
+  .sk-fv__body { padding-top: 8px; }
+}
+
+/* ---------- 押せる範囲を 44px 以上に（第8回レビュー 中-1）。見た目の文字サイズは変えず、
+   上下の余白で押せる高さを取り、同じ分の負の margin で見た目の位置をほぼ保つ ---------- */
+.sk-road { padding: 12px 0; margin-block: -4px; }                 /* 14px×1.5＋24px＝45px */
+.sk-roadbar .sk-road { padding: 12px 0; margin-block: -4px; }
+.sk-ctable .sk-road { padding: 12px 0; margin-block: -8px; }
+.sk-jump a, .sk-jump-link { padding: 10px 0; margin-block: -2px; } /* 16px×1.5＋20px＝44px */
+.sk-tel-link {                                                     /* 表の中の電話リンク（16px×1.7＋20px＝47px） */
+  display: inline-block;
+  padding: 10px 0;
+  margin-block: -10px;
+}
+.sk-header__btn { position: relative; }                            /* 見た目は 36px のまま、押せる範囲を上下に広げて 46px */
+.sk-header__btn::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: -6px; bottom: -6px;                                         /* 枠の内側（34px）＋12px＝46px */
+}
