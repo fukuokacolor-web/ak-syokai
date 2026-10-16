@@ -577,6 +577,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square;
 
 .fleet { margin-top: 56px; }
 .fleet p { margin-top: 8px; }
+.fleet__more { margin-top: 16px; font-size: 16px; line-height: 1.7; }
 
 .scroller {
   display: flex;
@@ -664,6 +665,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square;
   border-radius: 2px;
   font-size: 16px; font-weight: 700;
 }
+.vtypes__flat { margin-top: 10px; font-size: 16px; line-height: 1.7; }
 .vtypes .note { margin-top: 8px; }
 
 @media (min-width: 1024px) {
@@ -676,6 +678,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square;
 /* ---------- 11. 料金 ---------- */
 .price { margin-top: 20px; }
 .price__main > * + * { margin-top: 20px; }
+/* 料金の囲み：見出し（見積もり無料・事前にご説明）の下に、到着料の2行を同じ強さで置く */
+.callout__fee { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--c-line); }
+.callout__fee .callout__title + .callout__title { margin-top: 4px; }
 .callout {
   background: var(--c-surface);
   border-left: 4px solid var(--c-accent);
@@ -747,9 +752,39 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square;
   padding: 4px 6px;
 }
 .tag--tbd { border: 1px dashed #4A525E; }
+
+/* 福岡市内の到着時間（エリアのタグとは別のまとまり。主役の「福岡県全域」より控えめに） */
+.avgtime {
+  margin-top: 24px;
+  background: #FFFFFF;
+  border: 1px solid var(--c-light-line);
+  border-radius: 4px;
+  padding: 16px 20px;
+}
+.area__head .avgtime p { margin-top: 0; }
+.area__head .avgtime .note { margin-top: 6px; }
+.avgtime__text { font-size: 17px; font-weight: 700; line-height: 1.6; }
+.avgtime__num { font-size: 24px; line-height: 1; margin: 0 2px; }
+
+/* エリアのタグ：福岡県全域（大）→ 7区・糸島市（小）→ ほかの市町村にも */
+.area__tags { margin-top: 32px; }
+.area__tags .tags { margin-top: 0; }
+.area__tags-lead { margin-top: 20px; font-size: 16px; font-weight: 700; line-height: 1.6; }
+.tags--sub { gap: 8px; margin-top: 10px; }
+.tag--sub {
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--c-light-line);
+  font-size: 16px; font-weight: 700;
+  color: var(--c-light-text);
+}
+.area__tags-after { margin-top: 12px; font-size: 16px; line-height: 1.7; }
 @media (min-width: 1024px) {
-  .area { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; }
+  .area { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
   .tags { margin-top: 0; }
+  .area__tags { margin-top: 0; padding-top: 72px; }
+  /* PCは4つずつ2段にそろえる（「糸島市」だけが3段目に落ちないように） */
+  .tags--sub { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; }
 }
 
 /* ---------- 14. ご依頼の流れ ---------- */
