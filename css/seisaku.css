@@ -473,29 +473,6 @@
 .sk-contact__always { margin-top: 16px; font-size: 14px; line-height: 1.5; color: var(--c-text-sub); }
 .sk-contact__always p:first-child { font-weight: 700; color: #FFFFFF; }
 
-.sk-panel { margin-top: 40px; text-align: left; }
-.sk-copy__lead { font-size: 16px; line-height: 1.7; color: var(--c-text-sub); }
-.sk-copybox { margin-top: 16px; }
-.sk-copybox .copybox__text { font-size: 16px; line-height: 1.8; color: #FFFFFF; white-space: pre-wrap; max-width: none; }
-.sk-copybox .copybox__btn { position: static; margin-top: 16px; }
-.sk-copy-status { margin-top: 8px; font-size: 14px; line-height: 1.6; color: var(--c-text-sub); }
-.sk-copy-status:empty { display: none; }
-.sk-photo-tips { margin-top: 16px; }
-.sk-photo-tips li {
-  position: relative;
-  padding-left: 16px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--c-text-sub);
-}
-.sk-photo-tips li + li { margin-top: 4px; }
-.sk-photo-tips li::before {
-  content: "";
-  position: absolute;
-  left: 0; top: .6em;
-  width: 6px; height: 6px;
-  background: var(--c-text-sub);
-}
 .sk-contact__foot { margin-top: 32px; }
 
 @media (min-width: 1024px) {
@@ -514,12 +491,6 @@
   .sk-contact__inner > * { max-width: 720px; }
   .sk-cta--contact { margin-top: 48px; }
   .sk-cta--contact .sk-cta__col { flex: 0 0 320px; }
-  .sk-panel {
-    margin-top: 48px;
-    padding: 32px;
-    background: var(--c-surface);
-    border-radius: 4px;
-  }
 }
 
 /* ---------- 13. 受付時間外（18:00〜翌9:00）の案内。body.is-closed のときだけ表示 ---------- */
@@ -537,7 +508,7 @@
 .sk-closed__title { font-size: 16px; font-weight: 700; line-height: 1.6; color: #FFFFFF; }
 .sk-closed--box .sk-road { font-size: 16px; }
 @media (min-width: 1024px) {
-  .sk-panel .sk-closed--box { padding: 20px; background: var(--c-surface-2); }
+  .sk-contact .sk-closed--box { padding: 20px; }
 }
 
 .sk-closed--bar {

@@ -820,45 +820,10 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square;
 .step__photo img { width: 100%; height: auto; border-radius: 4px; }
 .step__photo figcaption { margin-top: 8px; font-size: 14px; line-height: 1.6; color: var(--c-text-sub); }
 
-.sendlist {
-  background: var(--c-surface-2);
-  border-radius: 4px;
-  padding: 4px 16px;
-}
-.sendlist > div { padding: 12px 0; }
-.sendlist > div + div { border-top: 1px solid var(--c-line); }
-.sendlist dt { font-size: 17px; font-weight: 800; color: #FFFFFF; }
-.sendlist dd { font-size: 16px; line-height: 1.7; color: var(--c-text-sub); margin-top: 2px; }
 .step .body-s { color: var(--c-text); }
-
-.copybox {
-  position: relative;
-  background: var(--c-surface-2);
-  border: 1px solid var(--c-line);
-  border-radius: 4px;
-  padding: 16px;
-}
-.copybox__text {
-  font-family: var(--f-ja);
-  font-size: 16px;
-  line-height: 1.8;
-  color: #FFFFFF;
-  white-space: pre-wrap;
-}
-.copybox__btn {
-  position: absolute;
-  top: 12px; right: 12px;
-  display: inline-flex; align-items: center; gap: 6px;
-  height: 44px; padding: 0 12px;
-  background: transparent;
-  border: 1px solid var(--c-text-sub);
-  border-radius: 6px;
-  color: #FFFFFF;
-  font-size: 15px; font-weight: 700;
-  cursor: pointer;
-}
-.copybox__btn svg { width: 18px; height: 18px; }
-.copybox__btn.is-done { border-color: var(--c-line-green); }
+/* STEP 01 の安全の一文（旧「写真の撮り方」欄の注意書きから移したもの） */
+.step__warn { display: flex; gap: 8px; font-size: 16px; line-height: 1.7; font-weight: 700; }
+.step__warn svg { flex: none; width: 22px; height: 22px; color: var(--c-focus); margin-top: 2px; }
 
 .flow__after { margin-top: 24px; color: var(--c-text-sub); }
 
@@ -888,44 +853,15 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square;
 }
 .which__panel--line .sq-list li::before { background: var(--c-line-green); }
 
-.shoot { margin-top: 72px; }
-.shoot__title { margin-top: 0; }
-.shoot__list { display: grid; gap: 12px; margin-top: 24px; }
-.shot {
-  background: var(--c-surface);
-  border-radius: 4px;
-  padding: 16px;
-}
-.shot__illust {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  height: auto;
-  background: var(--c-surface-2);
-  border-radius: 4px;
-  stroke: none;
-}
-.shot__title { margin-top: 12px; font-size: 17px; font-weight: 800; }
-.shot p:not(.shot__title):not(.note) { font-size: 16px; line-height: 1.7; margin-top: 4px; }
-.shot .note { margin-top: 6px; }
-
-.shoot__notes { margin-top: 24px; font-size: 16px; line-height: 1.7; }
-.shoot__notes p + p { margin-top: 8px; }
-.shoot__warn { display: flex; gap: 8px; font-weight: 700; }
-.shoot__warn svg { flex: none; width: 22px; height: 22px; color: var(--c-focus); margin-top: 2px; }
-
 @media (min-width: 1024px) {
   .steps, .flow__after { max-width: 760px; margin-inline: auto; }
   .steps { margin-top: 48px; }
   .step { padding-left: 32px; }
   .step__no::before { left: -39px; }
   .step__body .h3 { padding-right: 96px; }
-  .sendlist > div { display: grid; grid-template-columns: 4em 1fr; gap: 16px; }
-  .sendlist dd { margin-top: 0; }
   .which { margin-top: 88px; }
   .which__grid { grid-template-columns: 1fr 1fr; gap: 24px; }
   .which__panel { padding: 32px; }
-  .shoot { margin-top: 88px; }
-  .shoot__list { grid-template-columns: repeat(3, 1fr); gap: 24px; }
 }
 
 /* ---------- 15. FAQ ---------- */

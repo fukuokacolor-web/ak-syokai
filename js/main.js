@@ -63,62 +63,8 @@
   });
 
   /* ------------------------------------------------------------
-   * 2. 文面のコピー
-   *    ボタンに data-done-text / data-fail-text と data-status（状態表示のid）があれば、
-   *    その文を状態表示（aria-live）に出す。なければ従来どおりボタンの文言だけ切り替える。
+   * 2. 文面のコピー：2026-10-16 リッチメニュー対応で両ページともコピー用の文面を削除したため、機能ごと外した
    * ------------------------------------------------------------ */
-  function fallbackCopy(text) {
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.setAttribute('readonly', '');
-    ta.style.position = 'fixed';
-    ta.style.top = '-1000px';
-    document.body.appendChild(ta);
-    ta.select();
-    var ok = false;
-    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-    document.body.removeChild(ta);
-    return ok;
-  }
-
-  Array.prototype.forEach.call(document.querySelectorAll('[data-copy-target]'), function (btn) {
-    var label = btn.querySelector('span');
-    var original = label ? label.textContent : '';
-    var timer = null;
-    var doneText = btn.getAttribute('data-done-text');
-    var failText = btn.getAttribute('data-fail-text');
-    var status = btn.getAttribute('data-status') ? document.getElementById(btn.getAttribute('data-status')) : null;
-
-    btn.addEventListener('click', function () {
-      var target = document.getElementById(btn.getAttribute('data-copy-target'));
-      if (!target) return;
-      var text = target.textContent;
-
-      var done = function () {
-        if (label) label.textContent = 'コピーしました';
-        btn.classList.add('is-done');
-        if (status && doneText) status.textContent = doneText;
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-          if (label) label.textContent = original;
-          btn.classList.remove('is-done');
-        }, 2000);
-      };
-      var fail = function () {
-        if (status && failText) status.textContent = failText;
-      };
-
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(done, function () {
-          if (fallbackCopy(text)) done(); else fail();
-        });
-      } else if (fallbackCopy(text)) {
-        done();
-      } else {
-        fail();
-      }
-    });
-  });
 
   /* ------------------------------------------------------------
    * 3. 時間帯による表示の切り替え（日本時間）
