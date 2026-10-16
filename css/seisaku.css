@@ -301,6 +301,28 @@
 .sk-plate__cta { margin-top: auto; padding-top: 16px; }
 .sk-plate__cta .btn__main { font-size: 16px; }
 .sk-works-tel { margin-top: 24px; }
+
+/* 細部の写真（DETAIL。design.md 7-6 B）：写真は角0・枠なし、押せない */
+.sk-detail { margin-top: 56px; }
+.sk-detail .h3 { margin-top: 10px; }
+.sk-detail__desc { margin-top: 8px; font-size: 16px; line-height: 1.8; color: var(--c-text-sub); }
+.sk-detail__list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; margin-top: 20px; }
+.sk-detail__item--wide { grid-column: 1 / -1; }
+.sk-detail__item img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.sk-detail__item--wide img { aspect-ratio: 3 / 2; }
+.sk-detail__item figcaption { margin-top: 8px; color: var(--c-text-sub); }
+.sk-detail + .sk-works-tel { margin-top: 40px; }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sk-detail { max-width: 720px; margin-inline: auto; }
+}
+@media (min-width: 1024px) {
+  .sk-detail { margin-top: 72px; }
+  .sk-detail .h3, .sk-detail__desc { max-width: 640px; }
+  .sk-detail__list { grid-template-columns: 2fr 1fr 1fr; gap: 24px; align-items: start; margin-top: 28px; }
+  .sk-detail__item--wide { grid-column: auto; }
+  .sk-detail__item--wide img { aspect-ratio: 2 / 1; object-position: 50% 55%; }
+  .sk-detail + .sk-works-tel { margin-top: 56px; }
+}
 @media (min-width: 1024px) {
   .sk-plates { grid-template-columns: 1fr 1fr; margin-top: 48px; }
   .sk-plate__body { padding: 24px; }
