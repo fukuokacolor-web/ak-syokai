@@ -920,16 +920,32 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square;
   gap: 20px;
 }
 .friendly__item { display: flex; gap: 16px; align-items: flex-start; }
-.friendly__coco { flex: none; width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
 .friendly__car { flex: none; width: 120px; height: 120px; border-radius: 4px; object-fit: cover; }
 .friendly .h3 { font-size: 18px; }
 .friendly p { margin-top: 8px; font-size: 16px; line-height: 1.7; }
 .friendly figcaption { font-size: 16px; line-height: 1.7; align-self: center; }
+/* 看板犬2匹（design.md 6-11）：同じ大きさの円を横に並べ、名前は円の下。見出し・本文は2匹で1つ */
+.friendly__item--dogs { display: block; }
+.dogs { display: flex; justify-content: center; gap: 24px; }
+.dogs__item { text-align: center; }
+.dogs__photo {
+  display: block;
+  width: 132px; height: 132px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 4px #D9DCE1; /* 白い毛が地に溶けないよう、白いふち＋細い線 */
+}
+.dogs__name { margin-top: 8px; font-size: 16px; font-weight: 700; line-height: 1.5; color: #15181D; }
+.friendly .dogs__name { margin-top: 8px; }
+.friendly__item--dogs .h3 { margin-top: 16px; text-align: center; }
+.dogs__item { flex: none; }
+@media (max-width: 359px) {
+  /* 320px：枠の内側は 240px なので、円 110px×2＋すき間 20px（design.md の 120px だと入らない） */
+  .dogs { gap: 20px; }
+  .dogs__photo { width: 110px; height: 110px; }
+}
 @media (max-width: 1023px) {
-  /* スマホ・タブレット（design.md 7-3 P6）：ココちゃんは200pxの円を中央に→見出し（中央）→本文。愛車は枠の幅いっぱいの4:3、キャプションは下 */
-  .friendly__item--coco { flex-direction: column; align-items: stretch; }
-  .friendly__coco { width: 200px; height: 200px; margin: 0 auto; }
-  .friendly__item--coco .h3 { text-align: center; margin-top: 4px; }
+  /* スマホ・タブレット（design.md 7-3 P6）：愛車は枠の幅いっぱいの4:3、キャプションは下 */
   .friendly__item--car { flex-direction: column; align-items: stretch; gap: 10px; }
   .friendly__car { width: 100%; height: auto; aspect-ratio: 4 / 3; }
   .friendly figcaption { align-self: auto; }
@@ -946,11 +962,13 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square;
   .staff { display: grid; grid-template-columns: 40fr 60fr; gap: 56px; align-items: center; margin-top: 88px; }
   .staff__body { margin-top: 0; }
   .friendly { grid-template-columns: 60fr 40fr; padding: 32px; gap: 40px; margin-top: 88px; }
-  .friendly__coco { width: 200px; height: 200px; }
   .friendly__item--car { flex-direction: column; gap: 10px; }
   .friendly__car { width: 280px; height: auto; aspect-ratio: 4 / 3; }
   .friendly figcaption { align-self: auto; }
   .friendly .h3 { font-size: 20px; }
+  .dogs { justify-content: flex-start; gap: 32px; }
+  .dogs__photo { width: 160px; height: 160px; }
+  .friendly__item--dogs .h3 { margin-top: 20px; text-align: left; }
 }
 
 /* ---------- 17. 最後のCTA ---------- */
