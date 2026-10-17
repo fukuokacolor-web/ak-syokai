@@ -192,7 +192,8 @@
 .sk-story__body p + p { margin-top: 16px; }
 .sk-pair { display: grid; gap: 16px; margin-top: 32px; }
 .sk-pair__item img { width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
-.sk-pair__item:first-child img { object-position: 40% 50%; }
+/* ROAD（flow-work）の写真の位置。2026-10-17 に FACTORY → ROAD の順に入れ替えたため last-child */
+.sk-pair__item:last-child img { object-position: 40% 50%; }
 .sk-pair__item figcaption { margin-top: 8px; font-size: 14px; line-height: 1.6; color: var(--c-light-text-sub); }
 .sk-pair__en {
   font-family: var(--f-en);
@@ -324,10 +325,9 @@
   .sk-detail + .sk-works-tel { margin-top: 56px; }
 }
 @media (min-width: 1024px) {
-  .sk-plates { grid-template-columns: 1fr 1fr; margin-top: 48px; }
-  .sk-plate__body { padding: 24px; }
-  .sk-plate__sub img { width: 120px; height: 120px; }
-  .sk-plate__cta .btn__main { font-size: 17px; }
+  /* 製作事例は3枚（TYPE 01〜03）を横に並べる（design.md 7-7）。カードの中は少し詰め、サムネは 96px のまま、ボタンの1行目は 16px */
+  .sk-plates { grid-template-columns: repeat(3, 1fr); margin-top: 48px; }
+  .sk-plate__body { padding: 20px; }
   .sk-works-tel { margin-top: 32px; display: flex; justify-content: center; }
   .sk-works-tel .btn { width: 100%; max-width: 360px; }
 }
