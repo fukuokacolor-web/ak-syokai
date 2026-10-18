@@ -577,7 +577,20 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square;
 
 .fleet { margin-top: 56px; }
 .fleet p { margin-top: 8px; }
-.fleet__more { margin-top: 16px; font-size: 16px; line-height: 1.7; }
+/* 箱付き積載車の紹介の枠（design.md 6-12）：暗い地の上のパネル、写真は2列の 3:4 */
+.boxcar {
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: 4px;
+}
+.boxcar__title { position: relative; padding-left: 16px; font-size: 20px; font-weight: 800; line-height: 1.45; color: #FFFFFF; }
+.boxcar__title::before { content: ""; position: absolute; left: 0; top: .72em; width: 3px; height: 16px; transform: translateY(-50%); background: var(--c-accent); }
+.boxcar__text { margin-top: 10px; font-size: 16px; line-height: 1.7; color: var(--c-text-sub); }
+.boxcar__photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.boxcar__photos img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 2px; }
+.boxcar__photos figcaption { margin-top: 8px; color: var(--c-text-sub); }
 
 .scroller {
   display: flex;
@@ -631,6 +644,8 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square;
   .reason--3 .h3 { grid-column: 1 / -1; }
   .reason--3 .cert { margin-top: 56px; }
   .fleet { margin-top: 88px; }
+  .boxcar { display: grid; grid-template-columns: minmax(0, 1fr) 540px; gap: 40px; align-items: center; margin-top: 40px; padding: 32px; }
+  .boxcar__photos { margin-top: 0; gap: 10px; }
   .scroller {
     gap: 24px;
     padding-inline: max(var(--pad), calc((100% - 1120px) / 2));

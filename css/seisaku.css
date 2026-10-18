@@ -325,9 +325,11 @@
   .sk-detail + .sk-works-tel { margin-top: 56px; }
 }
 @media (min-width: 1024px) {
-  /* 製作事例は3枚（TYPE 01〜03）を横に並べる（design.md 7-7）。カードの中は少し詰め、サムネは 96px のまま、ボタンの1行目は 16px */
-  .sk-plates { grid-template-columns: repeat(3, 1fr); margin-top: 48px; }
-  .sk-plate__body { padding: 20px; }
+  /* 製作事例は4枚（TYPE 01〜04）を2列×2段に（design.md 7-8）。カードの中の余白 24px、サムネ 120px、ボタンの1行目 17px（2列のときの値） */
+  .sk-plates { grid-template-columns: 1fr 1fr; margin-top: 48px; }
+  .sk-plate__body { padding: 24px; }
+  .sk-plate__sub img { width: 120px; height: 120px; }
+  .sk-plate__cta .btn__main { font-size: 17px; }
   .sk-works-tel { margin-top: 32px; display: flex; justify-content: center; }
   .sk-works-tel .btn { width: 100%; max-width: 360px; }
 }
